@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://34frcpjjcibv"]
+
+[ext_resource type="Texture2D" uid="uid://c71m0d5tupp27" path="res://Sprites/characters/Old Crowe/Old Crowe.png" id="1_oxmaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cswsf"]
+size = Vector2(33, 45)
+
+[node name="OldCrowe" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oxmaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 9.5)
+shape = SubResource("RectangleShape2D_cswsf")

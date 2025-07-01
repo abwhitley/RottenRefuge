@@ -1,0 +1,14 @@
+# Godot-generated folders
+.import/
+.export/
+.godot/
+
+# Build artifacts
+bin/
+*.exe
+*.app
+*.pck
+
+# System files
+.DS_Store
+Thumbs.db

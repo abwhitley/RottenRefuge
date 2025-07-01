@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dktvx41e6up3w"]
+
+[ext_resource type="Script" uid="uid://cvvijutagsccj" path="res://Scenes/lexara.gd" id="1_i6vif"]
+[ext_resource type="Texture2D" uid="uid://d07rbgr8l7wnt" path="res://Sprites/characters/Lexara/Lexara.png" id="2_7b8ob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxeba"]
+size = Vector2(29, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ls057"]
+radius = 31.0161
+
+[node name="Lexara" type="CharacterBody2D"]
+script = ExtResource("1_i6vif")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7b8ob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_xxeba")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_ls057")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 54.0
+offset_top = 11.0
+offset_right = 94.0
+offset_bottom = 34.0
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

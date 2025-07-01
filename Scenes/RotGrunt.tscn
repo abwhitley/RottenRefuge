@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtxinouk2uikp"]
+
+[ext_resource type="Script" uid="uid://vjorx57ky2o2" path="res://Scenes/rot_grunt.gd" id="1_o24jw"]
+[ext_resource type="Texture2D" uid="uid://bfi3rd0fy0wm0" path="res://Sprites/characters/Enemies/RotGrunt1.png" id="2_oe3q5"]
+[ext_resource type="Script" uid="uid://dltprwiie14yg" path="res://Scenes/hurtbox.gd" id="3_oe3q5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpmrv"]
+size = Vector2(52, 65)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpmrv"]
+radius = 27.0
+height = 74.0
+
+[sub_resource type="Animation" id="Animation_lpmrv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar/Fill:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_oe3q5"]
+resource_name = "UpdateHealthBar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar/Fill:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(32, 4), Vector2(16, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gcyh"]
+_data = {
+&"RESET": SubResource("Animation_lpmrv"),
+&"UpdateHealthBar": SubResource("Animation_oe3q5")
+}
+
+[node name="RotGrunt" type="CharacterBody2D"]
+script = ExtResource("1_o24jw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_oe3q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_lpmrv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_oe3q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_lpmrv")
+
+[node name="HealthBar" type="Node2D" parent="."]
+position = Vector2(-10, -35)
+
+[node name="Background" type="ColorRect" parent="HealthBar"]
+offset_right = 32.0
+offset_bottom = 4.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Fill" type="ColorRect" parent="HealthBar"]
+offset_right = 16.0
+offset_bottom = 4.0
+color = Color(0.662745, 0.180392, 0.180392, 1)
+
+[node name="HealthBarAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8gcyh")
+}

@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=4 uid="uid://d3lypha70vrtg"]
+
+[ext_resource type="PackedScene" uid="uid://dhcs5tdq41efv" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://d3bq4mrcor088" path="res://Tilesets/Grass 64-1.png.png" id="2_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://cdh6x2y8j7ass" path="res://Tilesets/Grass 64-2.png" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dktvx41e6up3w" path="res://Scenes/Lexara.tscn" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://db82vlcvlfjw4" path="res://Tilesets/Grass 64-3.png (1).png" id="4_344ge"]
+[ext_resource type="PackedScene" uid="uid://dtxinouk2uikp" path="res://Scenes/RotGrunt.tscn" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://q718y0540bjl" path="res://Tilesets/Grass 64-4.png (1).png" id="5_ynf5e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
+texture = ExtResource("2_bo1nx")
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d1ilt"]
+texture = ExtResource("3_6bp64")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6iyac"]
+texture = ExtResource("4_344ge")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdnlq"]
+texture = ExtResource("5_ynf5e")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jjvhh"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_hptm8")
+sources/1 = SubResource("TileSetAtlasSource_d1ilt")
+sources/2 = SubResource("TileSetAtlasSource_6iyac")
+sources/3 = SubResource("TileSetAtlasSource_fdnlq")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gbba"]
+radius = 190.095
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+z_index = 4
+position = Vector2(35, -34)
+
+[node name="TileMap_Ground" type="TileMapLayer" parent="."]
+position = Vector2(30, -39)
+tile_map_data = PackedByteArray("AAD5/wAAAwAAAAAAAAD5/wEAAwAAAAAAAAD5/wIAAwAAAAAAAAD5/wMAAAAAAAAAAAD6/wAAAgAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAgAAAAAAAAD7/wAAAgAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAQAAAAAAAAD8/wAAAgAAAAAAAAD8/wEAAgAAAAAAAAD8/wIAAgAAAAAAAAD8/wMAAQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAwAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAwAAAAAAAAD+/wIAAwAAAAAAAAD+/wMAAQAAAAAAAAD//wAAAwAAAAAAAAD//wEAAAAAAAAAAAD//wIAAwAAAAAAAAD//wMAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAwAAAAAAAAABAAAAAwAAAAAAAAABAAEAAQAAAAAAAAABAAIAAwAAAAAAAAABAAMAAQAAAAAAAAACAAAAAwAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAwAAAAAAAAADAAAAAwAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAgAAAAAAAAAEAAMAAwAAAAAAAAAFAAAAAwAAAAAAAAAFAAEAAwAAAAAAAAAFAAIAAgAAAAAAAAAFAAMAAQAAAAAAAAAGAAAAAwAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAgAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAAAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAgAAAAAAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAAAAAAKAAAAAwAAAAAAAAAKAAEAAwAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAwAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAMAAgAAAAAAAAAJAPz/AQAAAAAAAAAJAP3/AgAAAAAAAAAJAP7/AgAAAAAAAAAJAP//AQAAAAAAAAAKAPz/AwAAAAAAAAAKAP3/AQAAAAAAAAAKAP7/AQAAAAAAAAAKAP//AQAAAAAAAAALAPz/AwAAAAAAAAALAP3/AgAAAAAAAAALAP7/AQAAAAAAAAALAP//AwAAAAAAAAAMAPz/AQAAAAAAAAAMAP3/AgAAAAAAAAAMAP7/AQAAAAAAAAAMAP//AQAAAAAAAAAFAPz/AwAAAAAAAAAFAP3/AwAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAGAPz/AgAAAAAAAAAGAP3/AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AwAAAAAAAAAHAPz/AgAAAAAAAAAHAP3/AQAAAAAAAAAHAP7/AwAAAAAAAAAHAP//AQAAAAAAAAAIAPz/AQAAAAAAAAAIAP3/AgAAAAAAAAAIAP7/AgAAAAAAAAAIAP//AwAAAAAAAAABAPz/AQAAAAAAAAABAP3/AQAAAAAAAAABAP7/AgAAAAAAAAABAP//AwAAAAAAAAACAPz/AQAAAAAAAAACAP3/AAAAAAAAAAACAP7/AwAAAAAAAAACAP//AgAAAAAAAAADAPz/AQAAAAAAAAADAP3/AwAAAAAAAAADAP7/AAAAAAAAAAADAP//AwAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AQAAAAAAAAAEAP7/AwAAAAAAAAAEAP//AwAAAAAAAAD9//z/AwAAAAAAAAD9//3/AQAAAAAAAAD9//7/AAAAAAAAAAD9////AwAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AwAAAAAAAAD+////AAAAAAAAAAD///z/AQAAAAAAAAD///3/AQAAAAAAAAD///7/AQAAAAAAAAD/////AwAAAAAAAAAAAPz/AQAAAAAAAAAAAP3/AwAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAD5//z/AwAAAAAAAAD5//3/AwAAAAAAAAD5//7/AgAAAAAAAAD5////AwAAAAAAAAD6//z/AQAAAAAAAAD6//3/AgAAAAAAAAD6//7/AwAAAAAAAAD6////AQAAAAAAAAD7//z/AQAAAAAAAAD7//3/AAAAAAAAAAD7//7/AwAAAAAAAAD7////AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AwAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAANAAEAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_jjvhh")
+
+[node name="Lexara" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(251, -142)
+
+[node name="SafeZone" type="Area2D" parent="." groups=["SafeZone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZone"]
+position = Vector2(137, -130)
+shape = SubResource("CircleShape2D_8gbba")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="RotGrunt" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(426, -7)
+player = NodePath("../Player")
